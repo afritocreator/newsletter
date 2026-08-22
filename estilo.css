@@ -27,6 +27,9 @@ h3{font:600 15px/1.4 var(--sans);margin:28px 0 8px;color:var(--acento);
 p{margin:0 0 1.15em}
 .sub{color:var(--apagado);font:400 15px/1.5 var(--mono);margin:0 0 8px;
      letter-spacing:.02em}
+.eyebrow{color:var(--apagado);font:600 13px/1 var(--sans);margin:0 0 4px;
+     text-transform:uppercase;letter-spacing:.1em}
+.deck{font:400 19px/1.5 var(--serif);margin:0 0 40px;text-wrap:pretty}
 ul{margin:0 0 1.15em;padding-left:1.1em;display:flex;flex-direction:column;gap:.6em}
 li{padding-left:.2em}
 li::marker{color:var(--acento)}
@@ -44,6 +47,12 @@ hr{border:0;border-top:1px solid var(--regla);margin:44px 0 22px}
 a{color:var(--acento)}
 a:focus-visible,:focus-visible{outline:2px solid var(--acento);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{
+  body{max-width:none;color:#111;background:#fff}
+  a{color:#111;text-decoration:none}
+  .caja{background:#f4f4f4;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  h2{border-top-color:#ccc}
+}
 
 .nav{display:flex;justify-content:space-between;align-items:baseline;
      margin-bottom:8px;font-family:var(--mono);font-size:13px}
@@ -53,3 +62,31 @@ footer.pie{margin-top:56px;padding-top:16px;border-top:1px solid var(--regla);
      display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
      font-family:var(--mono);font-size:13px;color:var(--apagado)}
 footer.pie a{color:var(--apagado)}
+footer.pie .pie-links{display:flex;gap:14px;flex-wrap:wrap}
+/* La navegación del sitio no sirve en papel — un link "← Archivo" no
+   lleva a ningún lado impreso. */
+@media print{.nav,footer.pie{display:none}}
+
+/* Portada (N11): la edición más reciente destacada, el resto como
+   archivo compacto — antes las dos cosas compartían el componente
+   ".caja" de los titulares (ver render_titulares en este mismo módulo),
+   así que TODAS las semanas se veían exactamente iguales, sin jerarquía
+   entre "lo de esta semana" y "lo de hace tres meses". */
+.destacada{margin:8px 0 48px}
+.destacada-grid{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.destacada-item{display:block;background:var(--panel);
+     border-left:3px solid var(--acento);border-radius:0 6px 6px 0;
+     padding:16px 20px;text-decoration:none;color:inherit;
+     transition:border-left-width .1s}
+.destacada-item:hover,.destacada-item:focus-visible{border-left-width:6px}
+.destacada-region{display:block;font:600 13px var(--mono);color:var(--acento);
+     text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.destacada-gancho{display:block;font-size:16px;line-height:1.5}
+
+.archivo-lista{display:flex;flex-direction:column;margin-top:6px}
+.archivo-fila{display:flex;justify-content:space-between;align-items:baseline;
+     gap:16px;padding:11px 0;border-bottom:1px solid var(--regla);
+     flex-wrap:wrap;font-size:14px}
+.archivo-fecha{color:var(--apagado);font-family:var(--mono);white-space:nowrap}
+.archivo-regiones a{margin-left:16px}
+@media print{.destacada-item{background:#f4f4f4}}

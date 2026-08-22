@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Qué es esto — AlgoComité</title>
+<meta name="description" content="Cómo se arma cada edición de AlgoComité, de dónde salen los datos, y qué tan lejos llega la verificación de cifras.">
+<meta property="og:image" content="https://afritocreator.github.io/newsletter/og-image.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='19' font-weight='700' fill='white' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@600;700&display=swap">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<header class="nav"><a href="index.html">← Archivo AlgoComité</a></header>
+
+<h1>Qué es esto</h1>
+<p class="sub">Cómo se arma cada edición, de dónde salen los datos, y qué
+tan lejos llega la verificación.</p>
+
+<h2>El comité</h2>
+<p>Cada edición la escribe un comité de modelos de lenguaje corriendo
+localmente (qwen2.5:7b, vía Ollama) — no un servicio en la nube, no un
+humano redactando a mano. El modelo nunca ve una fuente de datos ni puede
+llamar ninguna herramienta: solo recibe un bloque de cifras ya calculadas
+y la instrucción de redactar prosa sobre ellas, citándolas tal cual.</p>
+
+<h2>Cero cifras inventadas, verificado — no prometido</h2>
+<p>Después de que el modelo escribe una sección, un verificador aparte
+extrae CADA número del texto y lo compara contra los datos que ese texto
+recibió. Si aparece una cifra sin respaldo, la edición se marca como no
+publicable en vez de salir igual con un número sin origen. Esto es una
+propiedad medida del sistema, no una promesa del prompt — el código que
+lo hace cumplir es público.</p>
+<p>Lo que el verificador NO puede atrapar son errores de interpretación
+sobre números reales (a quién se le atribuye un superlativo, cómo se lee
+una brecha cambiaria) — esos se encuentran leyendo cada edición contra su
+propio dato antes de publicarla, y cuando aparece uno se corrige en la
+capa de datos, no pidiéndole al modelo que tenga más cuidado la próxima
+vez.</p>
+
+<h2>De dónde salen los datos</h2>
+<p>Precios e índices: Alpaca. Tasas, inflación y calendario macro de
+EE.UU.: FRED. Calendario de balances: Finnhub. Sentimiento de noticias:
+FinBERT, corriendo local sobre los titulares de cada papel. Merval y
+bonos soberanos: BYMA Open Data y data912. Dólares, riesgo país y
+feriados de Argentina: dolarapi.com, argentinadatos.com. Noticias locales
+argentinas: el RSS de Ámbito Financiero.</p>
+
+<h2>Lo que esto NO es</h2>
+<p><b>No es asesoramiento financiero ni una recomendación de inversión —
+es un ejercicio de tesis.</b> Es un proyecto de análisis propio sobre
+datos públicos, publicado para documentar el método. Cualquier decisión
+con plata propia requiere criterio propio, no la lectura de un
+newsletter generado por un comité de modelos de lenguaje.</p>
+
+<footer class="pie"><div class="pie-links"><a href="index.html">Todas las ediciones</a></div>
+<span>AlgoComité — análisis propio, no es asesoramiento financiero</span></footer>
+</body>
+</html>
