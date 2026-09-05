@@ -90,3 +90,15 @@ footer.pie .pie-links{display:flex;gap:14px;flex-wrap:wrap}
 .archivo-fecha{color:var(--apagado);font-family:var(--mono);white-space:nowrap}
 .archivo-regiones a{margin-left:16px}
 @media print{.destacada-item{background:#f4f4f4}}
+
+:root{
+  --fig-sube:#0f766e; --fig-baja:#b4232a; --fig-eje:#94a3b8; --fig-texto:#5b6670;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --fig-sube:#5eead4; --fig-baja:#f2908f; --fig-eje:#586066; --fig-texto:#93a0a4;
+}}
+:root[data-theme="dark"]{
+  --fig-sube:#5eead4; --fig-baja:#f2908f; --fig-eje:#586066; --fig-texto:#93a0a4;
+}
+.figura{margin:18px 0 26px}
+.figura svg{display:block;width:100%;height:auto}
