@@ -93,12 +93,21 @@ footer.pie .pie-links{display:flex;gap:14px;flex-wrap:wrap}
 
 :root{
   --fig-sube:#0f766e; --fig-baja:#b4232a; --fig-eje:#94a3b8; --fig-texto:#5b6670;
+  --fig-cat-1:#2f5fa8; --fig-cat-2:#c2703a; --fig-cat-3:#6b5b95;
+  --fig-cat-4:#4c9a76; --fig-cat-5:#a34d72; --fig-cat-6:#7a7550;
+  --fig-otras:#94a3b8;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --fig-sube:#5eead4; --fig-baja:#f2908f; --fig-eje:#586066; --fig-texto:#93a0a4;
+  --fig-cat-1:#7fa8e0; --fig-cat-2:#e0a878; --fig-cat-3:#b3a3d9;
+  --fig-cat-4:#8fd0b0; --fig-cat-5:#d998b8; --fig-cat-6:#c2bd8f;
+  --fig-otras:#6b7480;
 }}
 :root[data-theme="dark"]{
   --fig-sube:#5eead4; --fig-baja:#f2908f; --fig-eje:#586066; --fig-texto:#93a0a4;
+  --fig-cat-1:#7fa8e0; --fig-cat-2:#e0a878; --fig-cat-3:#b3a3d9;
+  --fig-cat-4:#8fd0b0; --fig-cat-5:#d998b8; --fig-cat-6:#c2bd8f;
+  --fig-otras:#6b7480;
 }
 .figura{margin:18px 0 26px}
 .figura svg{display:block;width:100%;height:auto}
