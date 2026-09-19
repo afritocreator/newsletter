@@ -52,6 +52,12 @@ a:focus-visible,:focus-visible{outline:2px solid var(--acento);outline-offset:3p
   a{color:#111;text-decoration:none}
   .caja{background:#f4f4f4;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   h2{border-top-color:#ccc}
+  /* Fase 4b: sin esto, un PDF de varias páginas (el informe de Copa
+     BYMA, con sus cuatro figuras) puede cortar una figura o un bloque
+     de cumplimiento justo en el salto de página, dejando la mitad de un
+     gráfico en una hoja y la otra mitad en la siguiente. */
+  .figura,.caja,blockquote{break-inside:avoid;page-break-inside:avoid}
+  h2{break-after:avoid;page-break-after:avoid}
 }
 
 .nav{display:flex;justify-content:space-between;align-items:baseline;
