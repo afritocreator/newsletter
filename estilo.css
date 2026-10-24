@@ -117,3 +117,31 @@ footer.pie .pie-links{display:flex;gap:14px;flex-wrap:wrap}
 }
 .figura{margin:18px 0 26px}
 .figura svg{display:block;width:100%;height:auto}
+.figura-original{max-width:100%;min-width:0;overflow-x:auto;border:1px solid var(--regla,#ccc)}
+.figura-original svg{width:768px;min-width:100%;max-width:none}
+/* 24/10/2026: los 768px fijos obligaban a desplazar también en escritorio
+   (columna de ~590px en compartible/sitio). Con columna de 560px o más el
+   dibujo entra completo; debajo sigue el desplazamiento del móvil. Sin
+   soporte de container queries queda el comportamiento anterior. */
+.figura{container-type:inline-size}
+@container (min-width:560px){.figura-original svg{width:100%;min-width:0}}
+.figura-original:focus-visible{outline:2px solid var(--acento,#0f766e);outline-offset:3px}
+@media print{
+  /* El selector de tema no puede heredar su paleta clara sobre papel blanco.
+     !important queda acotado a impresión y cubre también tema explícito. */
+  :root{--fondo:#fff!important;--panel:#fff!important;--tinta:#111!important;
+    --apagado:#333!important;--acento:#0f766e!important;
+    --sube:#0f766e!important;--baja:#b4232a!important;
+    --fig-texto:#111!important;--fig-eje:#555!important;
+    --fig-sube:#0f766e!important;--fig-baja:#b4232a!important;
+    --fig-cat-1:#2f5fa8!important;--fig-cat-2:#925026!important;
+    --fig-cat-3:#6b5b95!important;--fig-cat-4:#32684f!important;
+    --fig-cat-5:#a34d72!important;--fig-cat-6:#625d3c!important;--fig-otras:#555!important}
+  body{color:#111!important;background:#fff!important}
+  .figura svg text{fill:#111!important;opacity:1!important}
+  .figura{break-inside:auto;page-break-inside:auto}
+  .figura svg{break-inside:avoid;page-break-inside:avoid}
+  .figura-original{overflow:visible;border:0}
+  .figura-original svg{width:100%;min-width:0;max-width:100%}
+  @page{size:A4 portrait;margin:15mm}
+}
